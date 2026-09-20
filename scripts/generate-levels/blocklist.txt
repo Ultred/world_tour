@@ -1,0 +1,21 @@
+# Manual blocklist — one word per line, case-insensitive, uppercased at load time.
+# Lines starting with # are ignored.
+#
+# The automatic filters already remove a lot:
+#  - word-list itself filters out many common bad words (see its own docs).
+#  - Any SUBTLEX entry capitalized in the source corpus is treated as a likely
+#    proper noun (character name) and dropped — see dictionary.ts.
+#
+# This file is for whatever slips through both of those: lowercase names that
+# are also common words (so the capitalization heuristic misses them),
+# abbreviations, or anything else a human reviewer flags. Section 6.8 of
+# WORD_TOUR_PROTOTYPE.md calls for a human review pass of a level sample
+# before each release — add to this file as that turns up problems, and
+# re-run the generator (results are cached per dictionary version, but a
+# blocklist change always requires a fresh run).
+
+# Example starter entries — common lowercase first names that read oddly as board words:
+SAM
+MAX
+WILL
+JACK

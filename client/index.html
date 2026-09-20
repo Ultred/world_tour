@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Tour Live - TikTok 1080x1920</title>
+</head>
+<body>
+
+<div id="frame">
+  <div class="stage" id="stage">
+
+    <!-- Leaderboard: #1 pinned on the left, everyone else scrolls on the right -->
+    <div class="leaderboard">
+      <div class="lb-leader" id="lbLeader"></div>
+      <div class="lb-ticker"><div class="lb-view" id="lbView"><div class="lb-track" id="lbTrack"></div></div></div>
+      <!-- Stream-wide combo badge — a sibling of lbLeader, not a child: renderLeader() replaces
+           lbLeader's children wholesale on every render, which would wipe out anything nested inside it. -->
+      <div class="streak-badge hidden" id="streakBadge"></div>
+    </div>
+
+    <!-- Round timer: progress bar + m:ss, between the leaderboard and the board -->
+    <div class="round-timer" id="roundTimerBar">
+      <div class="round-timer-track"><div class="round-timer-fill" id="roundTimerFill"></div></div>
+      <div class="round-timer-label" id="roundTimerLabel">0:00</div>
+    </div>
+
+    <div class="board-area" id="boardArea">
+      <canvas id="board"></canvas>
+
+      <!-- "GET READY" intro, shown briefly before each round starts -->
+      <div class="round-intro" id="roundIntro"><span>GET READY</span></div>
+
+      <!-- "TIME'S UP" banner, shown when the round clock runs out -->
+      <div class="timeup-banner" id="timeUpBanner">TIME'S UP</div>
+
+      <!-- Round summary: top scorers this round, featured word, solver count -->
+      <div class="round-summary" id="roundSummary">
+        <div class="round-summary-title" id="roundSummaryTitle">Round Complete</div>
+        <ol class="round-summary-list" id="roundSummaryList"></ol>
+        <div class="round-summary-featured" id="roundSummaryFeatured"></div>
+        <div class="round-summary-solvers" id="roundSummarySolvers"></div>
+      </div>
+    </div>
+
+    <div class="letter-wheel-wrap" id="letterWheelWrap">
+      <div class="letter-wheel-disc"></div>
+      <div class="wheel-action-btn tl" id="actionShuffle" title="Shuffle the letters">
+        <img src="/icons/shuffle.svg" alt="">
+      </div>
+      <div class="wheel-action-btn tr" id="actionHint" title="Reveal a Letter">
+        <img src="/icons/hint.svg" alt="">
+      </div>
+      <div class="wheel-action-btn bl" id="actionTarget" title="Reveal a Word">
+        <img src="/icons/target.svg" alt="">
+      </div>
+      <div class="wheel-action-btn br" id="actionFirework" title="Reveal All Words">
+        <img src="/icons/firework.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Gift guide: which gift triggers which power-up -->
+    <div class="gift-guide">
+      <div class="gift-guide-item">
+        <div class="gift-guide-top">
+          <span class="gift-guide-trigger">🌹 Rose</span>
+          <span class="gift-guide-arrow">→</span>
+          <img src="/icons/shuffle.svg" alt="">
+        </div>
+        <span class="gift-guide-label">Shuffle</span>
+      </div>
+      <div class="gift-guide-item">
+        <div class="gift-guide-top">
+          <span class="gift-guide-trigger">💎 1–4</span>
+          <span class="gift-guide-arrow">→</span>
+          <img src="/icons/hint.svg" alt="">
+        </div>
+        <span class="gift-guide-label">Reveal a Letter</span>
+      </div>
+      <div class="gift-guide-item">
+        <div class="gift-guide-top">
+          <span class="gift-guide-trigger">💎 5–19</span>
+          <span class="gift-guide-arrow">→</span>
+          <img src="/icons/target.svg" alt="">
+        </div>
+        <span class="gift-guide-label">Reveal a Word</span>
+      </div>
+      <div class="gift-guide-item">
+        <div class="gift-guide-top">
+          <span class="gift-guide-trigger">💎 20+</span>
+          <span class="gift-guide-arrow">→</span>
+          <img src="/icons/firework.svg" alt="">
+        </div>
+        <span class="gift-guide-label">Reveal All</span>
+      </div>
+    </div>
+
+    <!-- Gift reveal: "gift ticket" -->
+    <div class="gift-stage" id="giftBanner">
+      <div class="gift-rays"></div>
+      <div class="gift-ticket">
+        <div class="gift-card">
+          <div class="gift-stub">
+            <div class="gift-avatar-wrap"><div class="gift-avatar avatar" id="giftAvatar"></div></div>
+            <div class="gift-from">GIFT FROM</div>
+            <div class="gift-name" id="giftName"></div>
+          </div>
+          <div class="gift-perf"></div>
+          <div class="gift-main">
+            <div class="gift-label">POINTS EARNED</div>
+            <div class="gift-points">+<span id="giftPoints">0</span></div>
+            <div class="gift-chips">
+              <div class="gift-chip"><b id="giftWords">0</b><span id="giftWordsLbl">WORDS</span></div>
+              <div class="gift-chip" id="giftBonusChip"><b id="giftBonusVal">+0</b>BONUS</div>
+            </div>
+          </div>
+        </div>
+        <div class="gift-ribbon">
+          <img src="/icons/gift-ribbon.svg" width="14" height="14" alt="">
+          GIFT REVEAL
+        </div>
+        <span class="gift-spark s1"></span><span class="gift-spark s2"></span>
+        <span class="gift-spark s3"></span><span class="gift-spark s4"></span>
+      </div>
+    </div>
+
+    <!-- Featured word: "trophy plaque" -->
+    <div class="feat-stage" id="featStage">
+      <div class="feat-plaque">
+        <img class="feat-medal" src="/icons/trophy-medal.svg" alt="">
+        <div class="feat-text">
+          <div class="feat-kicker">FEATURED WORD</div>
+          <div class="feat-letters" id="featLetters"></div>
+          <div class="feat-by"><span class="feat-av avatar" id="featAv"></span><b id="featName"></b><span>found it!</span></div>
+        </div>
+        <div class="feat-coin"><b id="featPts">+0</b><i>PTS</i></div>
+      </div>
+    </div>
+
+    <canvas class="fx-canvas" id="fxCanvas"></canvas>
+  </div>
+</div>
+
+<!-- Test panel: simulate chat comments (not part of the video frame) -->
+<button id="soundBtn" class="dev-fab">🔇 Enable sound</button>
+<button id="panelToggle" class="dev-fab dev-fab-primary">🛠 Test Panel</button>
+<div class="dev-panel" id="devPanel">
+  <div class="dev-panel-header">Word Tour <span>· Dev Panel</span></div>
+
+  <section class="dev-box">
+    <h3 class="dev-box-title"><span class="dev-box-icon">📡</span>TikTok LIVE</h3>
+    <div id="tiktokStatus" class="tiktok-status offline"><i class="status-dot"></i>Not connected — use the simulator below</div>
+    <input id="tiktokHandleInput" class="input-lg" placeholder="tiktok handle (no @)">
+    <div class="dev-row">
+      <button id="tiktokConnectBtn" class="btn btn-accent btn-block">Connect</button>
+      <button id="tiktokDisconnectBtn" class="btn btn-ghost btn-block">Disconnect</button>
+    </div>
+  </section>
+
+  <section class="dev-box">
+    <h3 class="dev-box-title"><span class="dev-box-icon">💬</span>Simulate a viewer</h3>
+    <p class="dev-hint">Guess a word using only the letters shown</p>
+    <input id="usernameInput" placeholder="username" value="viewer1">
+    <input id="guessInput" placeholder="type a word guess and press Enter">
+    <button id="newBoardBtn" class="btn btn-block">🆕 New Board</button>
+    <button id="resetLeaderboardBtn" class="btn btn-danger btn-block">🗑 Reset Leaderboard</button>
+  </section>
+
+  <section class="dev-box">
+    <h3 class="dev-box-title"><span class="dev-box-icon">🎁</span>Simulate a gift</h3>
+    <p class="dev-hint">Same icons shown on stage — click here to test, not on the video frame itself</p>
+    <div class="powerup-row">
+      <button id="simShuffleBtn" class="powerup-btn" title="Shuffle the letters"><img src="/icons/shuffle.svg" alt=""><span>Shuffle</span></button>
+      <button id="simHintBtn" class="powerup-btn" title="Reveal a Letter"><img src="/icons/hint.svg" alt=""><span>Letter</span></button>
+      <button id="simTargetBtn" class="powerup-btn" title="Reveal a Word"><img src="/icons/target.svg" alt=""><span>Word</span></button>
+      <button id="simFireworkBtn" class="powerup-btn" title="Reveal All Words"><img src="/icons/firework.svg" alt=""><span>All</span></button>
+    </div>
+  </section>
+
+  <section class="dev-box">
+    <h3 class="dev-box-title"><span class="dev-box-icon">🔊</span>Audio</h3>
+    <div class="dev-row-split"><label class="switch-label"><input type="checkbox" id="musicOn" checked> Music</label><input type="range" id="musicVol" min="0" max="1" step="0.05" value="0.3"></div>
+    <div class="dev-row-split"><label class="switch-label"><input type="checkbox" id="sfxOn" checked> Effects</label><input type="range" id="sfxVol" min="0" max="1" step="0.05" value="0.9"></div>
+  </section>
+
+  <section class="dev-box">
+    <h3 class="dev-box-title"><span class="dev-box-icon">⏱</span>Round timer</h3>
+    <p class="dev-hint">Dev only — the live game never pauses</p>
+    <label class="switch-label"><input type="checkbox" id="roundPause"> Pause countdown</label>
+    <button id="forceTimeUpBtn" class="btn btn-block" style="margin-top:8px">⏰ Force Time's Up</button>
+    <p class="dev-hint" style="margin-top:12px">Round length override (seconds, applies next round)</p>
+    <div class="dev-row">
+      <input type="number" id="roundDurationOverride" placeholder="180" min="5" step="5">
+      <button id="roundDurationApplyBtn" class="btn">Apply</button>
+    </div>
+  </section>
+
+  <section class="dev-box dev-box-log">
+    <h3 class="dev-box-title"><span class="dev-box-icon">📋</span>Event log</h3>
+    <div class="log" id="log"></div>
+  </section>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
