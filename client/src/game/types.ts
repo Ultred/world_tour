@@ -13,6 +13,8 @@ export interface Cell {
   big?: boolean;
   /** Internal: the sparkle burst for this tile has already been spawned once. */
   burst?: boolean;
+  /** Golden Tile modifier's own letter — gets a coin-flash + sunburst reveal instead of the plain gift shimmer. */
+  golden?: boolean;
   /** Revealed by the round timer running out, not solved by anyone — dimmed, no owner, no points. */
   missed?: boolean;
 }

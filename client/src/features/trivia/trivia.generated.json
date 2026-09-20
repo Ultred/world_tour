@@ -1,0 +1,2202 @@
+[
+  {
+    "word": "MOWER",
+    "definition": "Garden tool for mowing grass on lawns",
+    "choices": [
+      "MOWER",
+      "LUAU",
+      "ENABLE",
+      "SHAM"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "STAKE",
+    "definition": "(law) a right or legal share of something",
+    "choices": [
+      "STAKE",
+      "CHEAT",
+      "ROTTEN",
+      "MASS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "BLOCK",
+    "definition": "A solid piece of something (usually having flat rectangular sides)",
+    "choices": [
+      "TEETH",
+      "GUEST",
+      "USUAL",
+      "BLOCK"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "FLIES",
+    "definition": "(theater) the space over the stage (out of view of the audience) used to store scenery (drop curtains)",
+    "choices": [
+      "DRIVES",
+      "FLIES",
+      "WHEELS",
+      "OPTION"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "ADJUST",
+    "definition": "Alter or regulate so as to achieve accuracy or conform to a standard",
+    "choices": [
+      "MARTIAL",
+      "DIAPERS",
+      "MARKER",
+      "ADJUST"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "STRIPES",
+    "definition": "V-shaped sleeve badge indicating military rank and service",
+    "choices": [
+      "GARLIC",
+      "STRIPES",
+      "HARDEST",
+      "HOLLER"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "VELVET",
+    "definition": "Smooth and soft to sight or hearing or touch or taste",
+    "choices": [
+      "IRONIC",
+      "HEALING",
+      "RABBITS",
+      "VELVET"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "GOSSIP",
+    "definition": "Light informal conversation for social occasions",
+    "choices": [
+      "GOSSIP",
+      "THEIRS",
+      "POPPED",
+      "STRINGS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TRIBE",
+    "definition": "A social division of (usually preliterate) people",
+    "choices": [
+      "DASH",
+      "LABEL",
+      "GREEDY",
+      "TRIBE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "ATTEMPT",
+    "definition": "Earnest and conscientious activity intended to do or accomplish something",
+    "choices": [
+      "APPEARS",
+      "REVENGE",
+      "SCREAMS",
+      "ATTEMPT"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "SERVANT",
+    "definition": "A person working in the service of another (especially in the household)",
+    "choices": [
+      "TRAILER",
+      "DEEPER",
+      "SERVANT",
+      "MONITOR"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "KIDNAP",
+    "definition": "Take away to an undisclosed location against their will and usually in order to extract a ransom",
+    "choices": [
+      "ANXIETY",
+      "DIVING",
+      "KIDNAP",
+      "CLOWNS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "EXPRESS",
+    "definition": "Not tacit or implied",
+    "choices": [
+      "DEALER",
+      "TRUSTED",
+      "EXPRESS",
+      "ACTRESS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "STAYS",
+    "definition": "A woman's close-fitting foundation garment",
+    "choices": [
+      "STAYS",
+      "PACKED",
+      "BANG",
+      "BOOTH"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "YET",
+    "definition": "Up to the present time",
+    "choices": [
+      "YET",
+      "LATE",
+      "KNEW",
+      "INTO"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TURN",
+    "definition": "A circular segment of a curve",
+    "choices": [
+      "MET",
+      "GIRL",
+      "TURN",
+      "ASK"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "DAYS",
+    "definition": "The time during which someone's life continues",
+    "choices": [
+      "MAY",
+      "DAYS",
+      "TODAY",
+      "FOUND"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PSYCHIC",
+    "definition": "Affecting or influenced by the human mind",
+    "choices": [
+      "APPEAL",
+      "PSYCHIC",
+      "DENTIST",
+      "PROPOSE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "TUNE",
+    "definition": "A succession of notes forming a distinctive sequence",
+    "choices": [
+      "BAIL",
+      "TUNE",
+      "GEAR",
+      "BLOWN"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "BELIEF",
+    "definition": "Any cognitive content held as true",
+    "choices": [
+      "ANNUAL",
+      "BELIEF",
+      "CLEARS",
+      "PRICES"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SPITE",
+    "definition": "Feeling a need to see others suffer",
+    "choices": [
+      "SPITE",
+      "PULLS",
+      "METHOD",
+      "NOISES"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TWINS",
+    "definition": "(mineralogy) two interwoven crystals that are mirror images on each other",
+    "choices": [
+      "COOKIE",
+      "TWINS",
+      "ADMIRE",
+      "GRASS"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PROBLEM",
+    "definition": "A state of difficulty that needs to be resolved",
+    "choices": [
+      "THINGS",
+      "PROBLEM",
+      "AFRAID",
+      "COMING"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "HOST",
+    "definition": "A person who invites guests to a social event (such as a party in his or her own home) and who is responsible for them while they are there",
+    "choices": [
+      "FORTH",
+      "HOST",
+      "CAVE",
+      "BASIC"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "GYM",
+    "definition": "Athletic facility equipped for sports or physical training",
+    "choices": [
+      "BEEF",
+      "GYM",
+      "HON",
+      "SPIT"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "FLEET",
+    "definition": "Moving very fast",
+    "choices": [
+      "UNFAIR",
+      "LEAN",
+      "FLEET",
+      "BUTLER"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "CIGAR",
+    "definition": "A roll of tobacco for smoking",
+    "choices": [
+      "OXYGEN",
+      "CIGAR",
+      "GATES",
+      "BUSH"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "DIVE",
+    "definition": "A cheap disreputable nightclub or dance hall",
+    "choices": [
+      "FRIES",
+      "SHOVE",
+      "THICK",
+      "DIVE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "CLICK",
+    "definition": "A short light metallic sound",
+    "choices": [
+      "DRIFT",
+      "CLUES",
+      "LUXURY",
+      "CLICK"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "PATROL",
+    "definition": "A detachment used for security or reconnaissance",
+    "choices": [
+      "PATTERN",
+      "ROMANCE",
+      "PATROL",
+      "ARRANGE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "PANCAKE",
+    "definition": "A flat cake of thin batter fried on both sides on a griddle",
+    "choices": [
+      "SERVER",
+      "PANCAKE",
+      "SCRAPE",
+      "DENYING"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SIGNED",
+    "definition": "Having a handwritten signature",
+    "choices": [
+      "FINGER",
+      "SIGNED",
+      "STOMACH",
+      "INSANE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "WIND",
+    "definition": "Air moving (sometimes with considerable force) from an area of high pressure to an area of low pressure",
+    "choices": [
+      "CODE",
+      "CARDS",
+      "WIND",
+      "BAND"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "CROOK",
+    "definition": "Someone who has committed a crime or has been legally convicted of a crime",
+    "choices": [
+      "ADDICT",
+      "ONIONS",
+      "INTENT",
+      "CROOK"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "SHUTTLE",
+    "definition": "Badminton equipment consisting of a ball of cork or rubber with a crown of feathers",
+    "choices": [
+      "SEEKING",
+      "FREEWAY",
+      "ATTRACT",
+      "SHUTTLE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "BOTH",
+    "definition": "(used with count nouns) two considered together",
+    "choices": [
+      "DEAR",
+      "FOUR",
+      "BIT",
+      "BOTH"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "DETECT",
+    "definition": "Discover or determine the existence, presence, or fact of",
+    "choices": [
+      "DETECT",
+      "CLIMBED",
+      "LICENCE",
+      "SKETCH"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "RACING",
+    "definition": "The sport of engaging in contests of speed",
+    "choices": [
+      "EFFECTS",
+      "CLERK",
+      "RACING",
+      "BENEATH"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "KETCHUP",
+    "definition": "Thick spicy sauce made from tomatoes",
+    "choices": [
+      "ORGANS",
+      "FURIOUS",
+      "KETCHUP",
+      "WOLVES"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "LIED",
+    "definition": "A German art song of the 19th century for voice and piano",
+    "choices": [
+      "UGLY",
+      "FILL",
+      "DESK",
+      "LIED"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "KID",
+    "definition": "A young person of either sex",
+    "choices": [
+      "KID",
+      "OPEN",
+      "SIDE",
+      "HARD"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "CLOUD",
+    "definition": "Any collection of particles (e.g., smoke or dust) or gases that is visible",
+    "choices": [
+      "TIRE",
+      "CLOUD",
+      "BOOT",
+      "HEROES"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "BARREL",
+    "definition": "A tube through which a bullet travels when a gun is fired",
+    "choices": [
+      "OWNED",
+      "DENIED",
+      "APPROVE",
+      "BARREL"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "ROAR",
+    "definition": "A deep prolonged loud noise",
+    "choices": [
+      "FLIRT",
+      "TUNES",
+      "TRIM",
+      "ROAR"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "PRIVACY",
+    "definition": "The quality of being secluded from the presence or view of others",
+    "choices": [
+      "NEPHEW",
+      "PRIVACY",
+      "COSTUME",
+      "GUITAR"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PICKUP",
+    "definition": "A light truck with an open body and low sides and a tailboard",
+    "choices": [
+      "SCENES",
+      "LIMITS",
+      "LARGER",
+      "PICKUP"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "CUSTOM",
+    "definition": "Made according to the specifications of an individual",
+    "choices": [
+      "CUSTOM",
+      "HANGS",
+      "DRIVERS",
+      "CREEPS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "ANCHOR",
+    "definition": "A mechanical device that prevents a vessel from moving",
+    "choices": [
+      "WELFARE",
+      "FORMULA",
+      "JAMMED",
+      "ANCHOR"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "GREATLY",
+    "definition": "To an extraordinary extent or degree",
+    "choices": [
+      "GREATLY",
+      "WHITES",
+      "INTERN",
+      "SALVAGE"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "CENTER",
+    "definition": "Equally distant from the extremes",
+    "choices": [
+      "FINDING",
+      "ISLAND",
+      "SEVERAL",
+      "CENTER"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "NEUTRAL",
+    "definition": "Having no personal preference",
+    "choices": [
+      "RULING",
+      "STOCKS",
+      "NEUTRAL",
+      "SLAVERY"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "SPA",
+    "definition": "A health resort near a spring or at the seaside",
+    "choices": [
+      "YOGA",
+      "SPA",
+      "DIM",
+      "UNDO"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "BRING",
+    "definition": "Take something or somebody with oneself somewhere",
+    "choices": [
+      "TALK",
+      "COUPLE",
+      "BRING",
+      "HEAD"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "FULL",
+    "definition": "Containing as much or as many as is possible or normal",
+    "choices": [
+      "HAIR",
+      "BREAK",
+      "LOVED",
+      "FULL"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "LEAST",
+    "definition": "The superlative of `little' that can be used with mass nouns and is usually preceded by `the'",
+    "choices": [
+      "COOL",
+      "MOST",
+      "LEAST",
+      "EASY"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "SCHOOL",
+    "definition": "An educational institution",
+    "choices": [
+      "GOTTA",
+      "WATCH",
+      "EVERY",
+      "SCHOOL"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "SOMEHOW",
+    "definition": "In some unspecified way or manner",
+    "choices": [
+      "PROJECT",
+      "SOMEHOW",
+      "FELLAS",
+      "SELLING"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PITCH",
+    "definition": "The property of sound that varies with variation in the frequency of vibration",
+    "choices": [
+      "JOINED",
+      "CRISIS",
+      "PITCH",
+      "TRAUMA"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "STRIKE",
+    "definition": "A group's refusal to work in protest against low pay or bad work conditions",
+    "choices": [
+      "SUGGEST",
+      "STRIKE",
+      "WORST",
+      "SUGAR"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "HAPPY",
+    "definition": "Enjoying or showing or marked by joy or pleasure",
+    "choices": [
+      "HOME",
+      "HAPPEN",
+      "HAPPY",
+      "DONE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "POOL",
+    "definition": "An excavation that is (usually) filled with water",
+    "choices": [
+      "POOL",
+      "NOTE",
+      "LAY",
+      "TRICK"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "SHEET",
+    "definition": "Any broad thin expanse or surface",
+    "choices": [
+      "SHEET",
+      "TOSS",
+      "TATTOO",
+      "LAYING"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "KEEPER",
+    "definition": "Someone in charge of other people",
+    "choices": [
+      "FULFILL",
+      "SQUASH",
+      "KEEPER",
+      "EXTENT"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "POTION",
+    "definition": "A medicinal or magical or poisonous beverage",
+    "choices": [
+      "GESTURE",
+      "POTION",
+      "DECIDES",
+      "FLAMES"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "TOUCH",
+    "definition": "The event of something coming in contact with the body",
+    "choices": [
+      "COMES",
+      "PAIN",
+      "TOUCH",
+      "WORSE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "PUDDING",
+    "definition": "Any of various soft thick unsweetened baked dishes",
+    "choices": [
+      "PUDDING",
+      "ENDLESS",
+      "BRAKES",
+      "OFFICES"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "WHITE",
+    "definition": "Being of the achromatic color of maximum lightness",
+    "choices": [
+      "LIVES",
+      "WHITE",
+      "LEARN",
+      "NEWS"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "DEPUTY",
+    "definition": "Someone authorized to exercise the powers of sheriff in emergencies",
+    "choices": [
+      "SUCKER",
+      "FAIRY",
+      "ADVANCE",
+      "DEPUTY"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "ELBOW",
+    "definition": "Hinge joint between the forearm and upper arm and the corresponding joint in the forelimb of a quadruped",
+    "choices": [
+      "ERASE",
+      "GALAXY",
+      "ELBOW",
+      "BRIBE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "JOLLY",
+    "definition": "Full of or showing high-spirited merriment",
+    "choices": [
+      "BENT",
+      "PUZZLE",
+      "JOLLY",
+      "TOPS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "DARE",
+    "definition": "A challenge to do something dangerous or foolhardy",
+    "choices": [
+      "DARE",
+      "KNOCK",
+      "FEELS",
+      "AGREE"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "EXHIBIT",
+    "definition": "An object or statement produced before a court of law and referred to while giving evidence",
+    "choices": [
+      "EXHIBIT",
+      "PRESUME",
+      "CHAPEL",
+      "SCARING"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "DUE",
+    "definition": "Owed and payable immediately or on demand",
+    "choices": [
+      "SIZE",
+      "DUE",
+      "MOON",
+      "VIEW"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SIGHT",
+    "definition": "An instance of visual perception",
+    "choices": [
+      "RISK",
+      "SIGHT",
+      "BURN",
+      "SETTLE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "ACCUSED",
+    "definition": "A defendant in a criminal proceeding",
+    "choices": [
+      "EDITOR",
+      "STEPPED",
+      "NEEDLE",
+      "ACCUSED"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "JOKING",
+    "definition": "Characterized by jokes and good humor",
+    "choices": [
+      "ALERT",
+      "MANAGED",
+      "JOKING",
+      "TEMPLE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "FIST",
+    "definition": "A hand with the fingers clenched in the palm (as for hitting)",
+    "choices": [
+      "EAGER",
+      "MERE",
+      "SUB",
+      "FIST"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "STAB",
+    "definition": "A sudden sharp feeling",
+    "choices": [
+      "CENT",
+      "STAB",
+      "TAN",
+      "ENVY"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PAYMENT",
+    "definition": "A sum of money paid or a claim discharged",
+    "choices": [
+      "EXISTS",
+      "RHYTHM",
+      "PAYMENT",
+      "RAISING"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "SON",
+    "definition": "A male human offspring",
+    "choices": [
+      "SON",
+      "SURE",
+      "SIR",
+      "WISH"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "SADLY",
+    "definition": "In an unfortunate way",
+    "choices": [
+      "SADLY",
+      "JETS",
+      "GREED",
+      "SUED"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "DINNER",
+    "definition": "The main meal of the day served in the evening or at midday",
+    "choices": [
+      "HUSBAND",
+      "DINNER",
+      "HONEY",
+      "POWER"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "UPTOWN",
+    "definition": "Of or located in the upper part of a town",
+    "choices": [
+      "MAINLY",
+      "FREAKY",
+      "MOTTO",
+      "UPTOWN"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "COLLAR",
+    "definition": "A band that fits around the neck and is usually folded over",
+    "choices": [
+      "LOYALTY",
+      "LUNGS",
+      "COLLAR",
+      "ALIKE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "DRAWN",
+    "definition": "Showing the wearing effects of overwork or care or suffering",
+    "choices": [
+      "THUMB",
+      "DATED",
+      "DRAWN",
+      "TRUCKS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "SHELTER",
+    "definition": "A structure that provides privacy and protection from danger",
+    "choices": [
+      "SOCCER",
+      "SHELTER",
+      "BUDDIES",
+      "ARGUING"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "MORON",
+    "definition": "A person of subnormal intelligence",
+    "choices": [
+      "FLIP",
+      "MORON",
+      "FILMS",
+      "RIFLE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "APOLOGY",
+    "definition": "An expression of regret at having caused trouble for someone",
+    "choices": [
+      "TORTURE",
+      "APOLOGY",
+      "CONFESS",
+      "REMOVED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "TRADING",
+    "definition": "Buying or selling securities or commodities",
+    "choices": [
+      "TASTED",
+      "SCORED",
+      "JANITOR",
+      "TRADING"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "DEPOSIT",
+    "definition": "The phenomenon of sediment or gravel accumulating",
+    "choices": [
+      "DEPOSIT",
+      "REQUIRE",
+      "CHAPTER",
+      "PERFUME"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "FUNNY",
+    "definition": "Arousing or provoking laughter",
+    "choices": [
+      "FUNNY",
+      "MATTER",
+      "GOES",
+      "MINUTE"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "HAM",
+    "definition": "Meat cut from the thigh of a hog (usually smoked)",
+    "choices": [
+      "EATS",
+      "HAM",
+      "FROG",
+      "NAP"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SELFISH",
+    "definition": "Concerned chiefly or only with yourself and your advantage to the exclusion of others",
+    "choices": [
+      "FALLEN",
+      "SELFISH",
+      "ANGELS",
+      "CRYSTAL"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "DELAYED",
+    "definition": "Not as far along as normal in development",
+    "choices": [
+      "BRUISES",
+      "DELAYED",
+      "SPYING",
+      "RUSHED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SKIN",
+    "definition": "A natural protective body covering and site of the sense of touch",
+    "choices": [
+      "SHAME",
+      "HALL",
+      "SKIN",
+      "HELD"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "KNIFE",
+    "definition": "Edge tool used as a cutting instrument",
+    "choices": [
+      "TICKET",
+      "DRUGS",
+      "EASIER",
+      "KNIFE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "HEARING",
+    "definition": "Able to perceive sound",
+    "choices": [
+      "ORDERED",
+      "COMMAND",
+      "BRIGHT",
+      "HEARING"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "TROUBLE",
+    "definition": "A source of difficulty",
+    "choices": [
+      "TROUBLE",
+      "FAMILY",
+      "HAVING",
+      "TELLING"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "CHEER",
+    "definition": "A cry or shout of approval",
+    "choices": [
+      "WISHES",
+      "SUITE",
+      "DATES",
+      "CHEER"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "MORGUE",
+    "definition": "A building (or room) where dead bodies are kept before burial or cremation",
+    "choices": [
+      "COFFIN",
+      "MORGUE",
+      "VERSUS",
+      "STALL"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SAVAGE",
+    "definition": "(of persons or their actions) able or disposed to inflict pain or suffering",
+    "choices": [
+      "MUSCLES",
+      "EMBRACE",
+      "SAVAGE",
+      "OCCUR"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "USED",
+    "definition": "Employed in accomplishing something",
+    "choices": [
+      "WAIT",
+      "DOOR",
+      "ONLY",
+      "USED"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "IMPRESS",
+    "definition": "The act of coercing someone into government service",
+    "choices": [
+      "IMPRESS",
+      "TESTED",
+      "SMARTER",
+      "PRAYING"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "CHEWING",
+    "definition": "Biting and grinding food in your mouth so it becomes soft enough to swallow",
+    "choices": [
+      "SCOUTS",
+      "GUNFIRE",
+      "CHEWING",
+      "CAUTION"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "DAGGER",
+    "definition": "A short knife with a pointed blade used for piercing or stabbing",
+    "choices": [
+      "CRACKS",
+      "DAGGER",
+      "LASTS",
+      "VALVE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "AMATEUR",
+    "definition": "Engaged in as a pastime",
+    "choices": [
+      "AMATEUR",
+      "FINALS",
+      "RESERVE",
+      "EIGHTH"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "CAP",
+    "definition": "A tight-fitting headdress",
+    "choices": [
+      "PET",
+      "ROLE",
+      "CAP",
+      "SAND"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "DRUG",
+    "definition": "A substance that is used as a medicine or narcotic",
+    "choices": [
+      "MILK",
+      "LEGS",
+      "VIDEO",
+      "DRUG"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "GOWN",
+    "definition": "A woman's dress, usually with a close-fitting bodice and a long flared skirt, often worn on formal occasions",
+    "choices": [
+      "STUD",
+      "GOWN",
+      "ANTS",
+      "POND"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "DANGER",
+    "definition": "The condition of being susceptible to harm or injury",
+    "choices": [
+      "DANGER",
+      "STUDY",
+      "STARTS",
+      "HELPED"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "PROPER",
+    "definition": "Marked by suitability or rightness or appropriateness",
+    "choices": [
+      "SHOTS",
+      "PROPER",
+      "SCARY",
+      "EFFECT"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "ROD",
+    "definition": "A long thin implement made of metal or wood",
+    "choices": [
+      "LEND",
+      "ROD",
+      "ACID",
+      "CHEF"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SOURCE",
+    "definition": "The place where something begins, where it springs into being",
+    "choices": [
+      "CLEARLY",
+      "TALENT",
+      "SOURCE",
+      "SURGERY"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "ELEMENT",
+    "definition": "An abstract part of something",
+    "choices": [
+      "QUICKER",
+      "PLEDGE",
+      "ELEMENT",
+      "SPEAKER"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "KISSING",
+    "definition": "Affectionate play (or foreplay without contact with the genital organs)",
+    "choices": [
+      "CAPABLE",
+      "KISSING",
+      "PASSING",
+      "MOMENTS"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "FLOCK",
+    "definition": "A church congregation guided by a pastor",
+    "choices": [
+      "VOODOO",
+      "SHAKES",
+      "ROBBER",
+      "FLOCK"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "OBVIOUS",
+    "definition": "Easily perceived by the senses or grasped by the mind",
+    "choices": [
+      "PRIEST",
+      "RIDING",
+      "OBVIOUS",
+      "POINTS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "MANY",
+    "definition": "A quantifier that can be used with count nouns and is often preceded by `as' or `too' or `so' or `that'",
+    "choices": [
+      "MANY",
+      "DEAL",
+      "YOUNG",
+      "BIG"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "RALLY",
+    "definition": "A large gathering of people intended to arouse enthusiasm",
+    "choices": [
+      "GRUNTS",
+      "RALLY",
+      "FOLK",
+      "STRAIN"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "CABINET",
+    "definition": "A piece of furniture resembling a cupboard with doors and shelves and drawers",
+    "choices": [
+      "CORONER",
+      "MODELS",
+      "CABINET",
+      "RITUAL"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "VARIOUS",
+    "definition": "Of many different kinds purposefully arranged but lacking any uniformity",
+    "choices": [
+      "NEARBY",
+      "TENSION",
+      "VARIOUS",
+      "LOSERS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "ACCOUNT",
+    "definition": "A record or narrative description of past events",
+    "choices": [
+      "CORNER",
+      "ACCOUNT",
+      "SUSPECT",
+      "PULLED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "LECTURE",
+    "definition": "A speech that is open to the public",
+    "choices": [
+      "LECTURE",
+      "DEMANDS",
+      "MEASURE",
+      "ETERNAL"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "LENGTH",
+    "definition": "The linear extent in space from one end to the other",
+    "choices": [
+      "THROWS",
+      "BRUTAL",
+      "LENGTH",
+      "SAVINGS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "LIBERAL",
+    "definition": "Showing or characterized by broad-mindedness",
+    "choices": [
+      "CRAWLED",
+      "LIBERAL",
+      "CARDIAC",
+      "TEASING"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "EXCITED",
+    "definition": "(of persons) excessively affected by emotion",
+    "choices": [
+      "EXCITED",
+      "ARREST",
+      "FLYING",
+      "PROGRAM"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "HOUND",
+    "definition": "Any of several breeds of dog used for hunting typically having large drooping ears",
+    "choices": [
+      "GRAIN",
+      "HOUND",
+      "FAILS",
+      "BOOGIE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "HIDEOUS",
+    "definition": "Grossly offensive to decency or morality",
+    "choices": [
+      "UNLOCK",
+      "RESENT",
+      "THREAD",
+      "HIDEOUS"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "WEARY",
+    "definition": "Physically and mentally fatigued",
+    "choices": [
+      "VILE",
+      "PEEP",
+      "ERRAND",
+      "WEARY"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "CRIB",
+    "definition": "Baby bed with high sides made of slats",
+    "choices": [
+      "DISK",
+      "POKE",
+      "FART",
+      "CRIB"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "FAMOUS",
+    "definition": "Widely known and esteemed",
+    "choices": [
+      "SEARCH",
+      "WEAPONS",
+      "BUILD",
+      "FAMOUS"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "CASH",
+    "definition": "Money in the form of bills or coins",
+    "choices": [
+      "COP",
+      "CASH",
+      "BUNCH",
+      "PARK"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "WOODEN",
+    "definition": "Made or consisting of (entirely or in part) or employing wood",
+    "choices": [
+      "CONSENT",
+      "HUNCH",
+      "BIZARRE",
+      "WOODEN"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "LUNATIC",
+    "definition": "Insane and believed to be affected by the phases of the moon",
+    "choices": [
+      "LUNATIC",
+      "STUDIES",
+      "LEADERS",
+      "PRIMARY"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "SCRATCH",
+    "definition": "An abraded area where the skin is torn or worn off",
+    "choices": [
+      "RESULT",
+      "SCRATCH",
+      "NATION",
+      "SMOOTH"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "LEGACY",
+    "definition": "(law) a gift of personal property by will",
+    "choices": [
+      "LEGACY",
+      "SHIFTS",
+      "PARTIAL",
+      "AMIGO"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "LOOSEN",
+    "definition": "Make loose or looser",
+    "choices": [
+      "CRACKER",
+      "RELIEVE",
+      "LOOSEN",
+      "IGNORED"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "CORRUPT",
+    "definition": "Lacking in integrity",
+    "choices": [
+      "ADVISED",
+      "CORRUPT",
+      "HATRED",
+      "TALLER"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "QUOTA",
+    "definition": "A prescribed number",
+    "choices": [
+      "BOUNCY",
+      "DIPPED",
+      "QUOTA",
+      "SPURS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "ARRIVE",
+    "definition": "Reach a destination",
+    "choices": [
+      "STEEL",
+      "ARRIVE",
+      "WARRANT",
+      "EFFORT"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SLIGHT",
+    "definition": "(quantifier used with mass nouns) small in quantity or degree",
+    "choices": [
+      "NOVEL",
+      "KIDNEY",
+      "TRAITOR",
+      "SLIGHT"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "FIRMLY",
+    "definition": "With resolute determination",
+    "choices": [
+      "FIRMLY",
+      "LITERS",
+      "SLIME",
+      "PEOPLES"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "PAGER",
+    "definition": "An electronic device that generates a series of beeps when the person carrying it is being paged",
+    "choices": [
+      "BAILED",
+      "MARROW",
+      "PAGER",
+      "FOLDED"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "BREAKUP",
+    "definition": "The termination or disintegration of a relationship (between persons or nations)",
+    "choices": [
+      "BREAKUP",
+      "LEARNS",
+      "SEVERED",
+      "RIDERS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TIMES",
+    "definition": "A more or less definite period of time now or previously present",
+    "choices": [
+      "PLAN",
+      "STREET",
+      "TIMES",
+      "MONTHS"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "ACCESS",
+    "definition": "The right to enter",
+    "choices": [
+      "SQUARE",
+      "CRASH",
+      "JACKET",
+      "ACCESS"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "FERRY",
+    "definition": "A boat that transports people or vehicles across a body of water and operates on a regular schedule",
+    "choices": [
+      "RANG",
+      "FERRY",
+      "DOVE",
+      "STONED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "PARISH",
+    "definition": "A local church community",
+    "choices": [
+      "REMORSE",
+      "PARISH",
+      "MARBLES",
+      "TWINKLE"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SHELL",
+    "definition": "Ammunition consisting of a cylindrical metal casing containing an explosive charge and a projectile",
+    "choices": [
+      "PLATES",
+      "SHELL",
+      "SIRE",
+      "ACTORS"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SUCH",
+    "definition": "Of so extreme a degree or extent",
+    "choices": [
+      "CLOSE",
+      "SUCH",
+      "SPEAK",
+      "IDEA"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "ELDERLY",
+    "definition": "Advanced in years",
+    "choices": [
+      "ELDERLY",
+      "HUNTED",
+      "REJECT",
+      "SEMINAR"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "BUN",
+    "definition": "Small rounded bread either plain or sweet",
+    "choices": [
+      "DOTS",
+      "TAME",
+      "BUN",
+      "DAMP"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "PRODUCE",
+    "definition": "Fresh fruits and vegetable grown for the market",
+    "choices": [
+      "PRODUCE",
+      "MOTHERS",
+      "HOCKEY",
+      "ROUNDS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "LEISURE",
+    "definition": "Time available for ease and relaxation",
+    "choices": [
+      "LEISURE",
+      "INSIDES",
+      "FAIRIES",
+      "HARNESS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "WEENIE",
+    "definition": "A smooth-textured sausage of minced beef or pork usually smoked",
+    "choices": [
+      "WEENIE",
+      "ELITE",
+      "VERBAL",
+      "NEWLY"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "SWEET",
+    "definition": "Having or denoting the characteristic taste of sugar",
+    "choices": [
+      "SWEET",
+      "WEEK",
+      "WAKE",
+      "CLASS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TWITCH",
+    "definition": "A sudden muscle spasm",
+    "choices": [
+      "APPLAUD",
+      "STENCH",
+      "MAGGOTS",
+      "TWITCH"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "LATEST",
+    "definition": "Up to the immediate present",
+    "choices": [
+      "ESCAPED",
+      "LATEST",
+      "CURSE",
+      "SOUNDED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "EXACT",
+    "definition": "Marked by strict and particular and complete accordance with fact",
+    "choices": [
+      "EXACT",
+      "MASK",
+      "GUESTS",
+      "CAST"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TOTAL",
+    "definition": "Constituting the full quantity or extent",
+    "choices": [
+      "TOTAL",
+      "DRAW",
+      "WASH",
+      "SPEECH"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "TALE",
+    "definition": "A message that tells the particulars of an act or occurrence or course of events",
+    "choices": [
+      "TALE",
+      "BLADE",
+      "CELLS",
+      "TOE"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "FOLDING",
+    "definition": "Capable of being folded up and stored",
+    "choices": [
+      "ENDINGS",
+      "CLARITY",
+      "RUGGED",
+      "FOLDING"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "IMPOSE",
+    "definition": "Compel to behave in a certain way",
+    "choices": [
+      "SCOOT",
+      "FOODS",
+      "CROWS",
+      "IMPOSE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "GLOBAL",
+    "definition": "Involving the entire earth",
+    "choices": [
+      "GLOBAL",
+      "DOUBTS",
+      "LINED",
+      "MUFFIN"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "BEEPER",
+    "definition": "An electronic device that generates a series of beeps when the person carrying it is being paged",
+    "choices": [
+      "BEEPER",
+      "PENCILS",
+      "CHIMP",
+      "HOPEFUL"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "FOUNDER",
+    "definition": "Inflammation of the laminated tissue that attaches the hoof to the foot of a horse",
+    "choices": [
+      "INSULIN",
+      "BEETLE",
+      "FOUNDER",
+      "ARCADE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "PURSUED",
+    "definition": "Followed with enmity as if to harm",
+    "choices": [
+      "FRAMES",
+      "SEATING",
+      "PURSUED",
+      "GRILLED"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "ABUSED",
+    "definition": "Used improperly or excessively especially drugs",
+    "choices": [
+      "HEROIC",
+      "HORIZON",
+      "JERKS",
+      "ABUSED"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "ASYLUM",
+    "definition": "A shelter from danger or hardship",
+    "choices": [
+      "ASYLUM",
+      "PINNED",
+      "JOKER",
+      "HATING"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "DROOL",
+    "definition": "Pretentious or silly talk or writing",
+    "choices": [
+      "CABLES",
+      "SMEAR",
+      "POLES",
+      "DROOL"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "HUGGING",
+    "definition": "Affectionate play (or foreplay without contact with the genital organs)",
+    "choices": [
+      "HUGGING",
+      "CRADLE",
+      "GROWLS",
+      "BOILER"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "INDEX",
+    "definition": "A numerical scale used to compare variables with one another or with some reference number",
+    "choices": [
+      "BRAWL",
+      "INDEX",
+      "ROSTER",
+      "SALSA"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "SHRED",
+    "definition": "A tiny or scarcely detectable amount",
+    "choices": [
+      "DONUTS",
+      "STALE",
+      "SHRED",
+      "FIEND"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "LAWSUIT",
+    "definition": "A comprehensive term for any proceeding in a court of law whereby an individual seeks a legal remedy",
+    "choices": [
+      "STREAK",
+      "LAWSUIT",
+      "GROWTH",
+      "BOURBON"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "HINT",
+    "definition": "An indirect suggestion",
+    "choices": [
+      "HINT",
+      "SCAN",
+      "PICKS",
+      "MENU"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "GUNMAN",
+    "definition": "A professional killer who uses a gun",
+    "choices": [
+      "GUNMAN",
+      "WEAVE",
+      "UNSEEN",
+      "GATEWAY"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "PICKET",
+    "definition": "A person employed to keep watch for some anticipated event",
+    "choices": [
+      "ONGOING",
+      "UPGRADE",
+      "PICKET",
+      "HUDDLE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "MAYHEM",
+    "definition": "The willful and unlawful crippling or mutilation of another person",
+    "choices": [
+      "ROOTING",
+      "IMPLANT",
+      "MAYHEM",
+      "EXHAUST"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "PUCK",
+    "definition": "A mischievous sprite of English folklore",
+    "choices": [
+      "CUTIE",
+      "BAGEL",
+      "POSTS",
+      "PUCK"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "COUNSEL",
+    "definition": "A lawyer who pleads cases in court",
+    "choices": [
+      "DREAMED",
+      "RESPOND",
+      "MURDERS",
+      "COUNSEL"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "VEST",
+    "definition": "A man's sleeveless garment worn underneath a coat",
+    "choices": [
+      "WALTZ",
+      "BULLS",
+      "REBEL",
+      "VEST"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "PROVOKE",
+    "definition": "Call forth (emotions, feelings, and responses)",
+    "choices": [
+      "AWAKEN",
+      "EXPLOIT",
+      "VIOLATE",
+      "PROVOKE"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "BRAVERY",
+    "definition": "A quality of spirit that enables you to face danger or pain without showing fear",
+    "choices": [
+      "SLIDES",
+      "POSTERS",
+      "BRAVERY",
+      "INSIGHT"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "STARING",
+    "definition": "(used of eyes) open and fixed as if in fear or wonder",
+    "choices": [
+      "ANYTIME",
+      "DESTINY",
+      "MEMBERS",
+      "STARING"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "PERFECT",
+    "definition": "Being complete of its kind and without defect or blemish",
+    "choices": [
+      "TAKING",
+      "BROUGHT",
+      "REPORT",
+      "PERFECT"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "DRASTIC",
+    "definition": "Forceful and extreme and rigorous",
+    "choices": [
+      "REVENUE",
+      "NAGGING",
+      "DRASTIC",
+      "REFUGE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "RAFT",
+    "definition": "A flat float (usually made of logs or planks) that can be used for transport or as a platform for swimmers",
+    "choices": [
+      "LID",
+      "TRAPS",
+      "RAFT",
+      "REALM"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "EXPIRED",
+    "definition": "Having come to an end or become void after passage of a period of time",
+    "choices": [
+      "SENIORS",
+      "PUZZLES",
+      "EXPIRED",
+      "FADING"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "TONIGHT",
+    "definition": "During the night of the present day",
+    "choices": [
+      "LITTLE",
+      "FATHER",
+      "ALREADY",
+      "TONIGHT"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "FELON",
+    "definition": "Someone who has committed a crime or has been legally convicted of a crime",
+    "choices": [
+      "TELLER",
+      "INNING",
+      "SWEETS",
+      "FELON"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "word": "ATOMIC",
+    "definition": "Of or relating to or comprising atoms",
+    "choices": [
+      "JINGLE",
+      "GOALS",
+      "ATOMIC",
+      "RACIST"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "FLUTE",
+    "definition": "A high-pitched woodwind instrument",
+    "choices": [
+      "FLUTE",
+      "GRIEVE",
+      "QUAINT",
+      "FOURS"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "GEISHA",
+    "definition": "A Japanese woman trained to entertain men with conversation and singing and dancing",
+    "choices": [
+      "RESTS",
+      "GEISHA",
+      "SHUFFLE",
+      "REBOUND"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "TEARING",
+    "definition": "Marked by extreme intensity of emotions or convictions",
+    "choices": [
+      "TEARING",
+      "CARRIER",
+      "SERVES",
+      "KNIVES"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "GRIM",
+    "definition": "Not to be placated or appeased or moved by entreaty",
+    "choices": [
+      "GRIM",
+      "FLOWN",
+      "ACRES",
+      "SEWER"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "word": "JERKING",
+    "definition": "Lacking a steady rhythm",
+    "choices": [
+      "SNIPERS",
+      "JERKING",
+      "REPENT",
+      "STIRRED"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "CHECKUP",
+    "definition": "A thorough physical examination",
+    "choices": [
+      "HYGIENE",
+      "PRISONS",
+      "CHECKUP",
+      "LOATHE"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "MODULE",
+    "definition": "One of the inherent cognitive or perceptual powers of the mind",
+    "choices": [
+      "SQUIRT",
+      "MODULE",
+      "CLAUSE",
+      "PONIES"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "word": "RAPID",
+    "definition": "Done or occurring in a brief period of time",
+    "choices": [
+      "RUINS",
+      "SIGHTS",
+      "RAPID",
+      "SPIES"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "word": "EXTRACT",
+    "definition": "A solution obtained by steeping or soaking a substance (usually in water)",
+    "choices": [
+      "INVADE",
+      "SAMURAI",
+      "EXTRACT",
+      "PHONEY"
+    ],
+    "correctIndex": 2
+  }
+]

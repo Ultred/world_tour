@@ -1,4 +1,5 @@
 import { dom, mk } from "../../core/dom";
+import { MODIFIER_CHIP_LABEL, MODIFIER_LABEL, MODIFIER_THEME, type RoundModifier } from "./modifiers";
 
 export type TimerColorState = "green" | "amber" | "red";
 
@@ -19,11 +20,27 @@ export function paintTimerBar(opts: {
   dom.roundTimerLabel.textContent = opts.label;
 }
 
-export function showIntro(): void {
+/** `modifier` picks the intro's per-modifier theme (icon + colour, see `MODIFIER_THEME`) —
+ * `null`/omitted shows the plain "GET READY" card between rounds. */
+export function showIntro(modifier: RoundModifier | null = null): void {
+  dom.roundIntro.dataset.modifier = modifier ?? "";
+  dom.roundIntroIcon.textContent = modifier ? MODIFIER_THEME[modifier].icon : "";
+  dom.roundIntroText.textContent = modifier ? MODIFIER_LABEL[modifier] : "GET READY";
   dom.roundIntro.classList.add("show");
 }
 export function hideIntro(): void {
   dom.roundIntro.classList.remove("show");
+}
+
+/** Persistent modifier indicator near the leaderboard, visible for the whole "playing" phase
+ * (see round.ts's renderRoundHud) — so a viewer who tunes in mid-round still sees the twist. */
+export function renderModifierChip(modifier: RoundModifier | null): void {
+  dom.modifierChip.classList.toggle("hidden", !modifier);
+  dom.modifierChip.dataset.modifier = modifier ?? "";
+  if (modifier) {
+    dom.modifierChipIcon.textContent = MODIFIER_THEME[modifier].icon;
+    dom.modifierChipText.textContent = MODIFIER_CHIP_LABEL[modifier];
+  }
 }
 
 export function showTimeUpBanner(): void {

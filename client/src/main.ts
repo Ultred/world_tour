@@ -4,6 +4,7 @@ import { audio } from "./audio";
 import { emitToServer } from "./core/net";
 import { animLoop, fitStage } from "./core/stage";
 import { setConnectionStatus, wireTestPanel } from "./dev/testPanel";
+import { renderWordList } from "./dev/wordList";
 import { handleGuess } from "./features/board/guess";
 import { setupLevel } from "./features/board/levelSetup";
 import { clearScores, loadScores } from "./features/leaderboard/persistence";
@@ -13,6 +14,7 @@ import { levelBag } from "./features/levels";
 import { applyBoardBroadcast, newBoard } from "./features/levels/progression";
 import { handlePowerUp } from "./features/powerups/powerups";
 import { forceTimeUp, startRound, startRoundWatchdog, tickRound } from "./features/round/round";
+import { applyTriviaBroadcast, handleTriviaAnswer, isTriviaActive } from "./features/trivia/trivia";
 import { state } from "./game/state";
 
 // ============ Init ============
@@ -39,6 +41,7 @@ if (!obsMode) {
   const firstLevel = levelBag.next();
   state.currentLevel = firstLevel;
   setupLevel(firstLevel);
+  renderWordList(); // dev-panel convenience for the very first board (progression.ts's newBoard covers every board after)
   const deadline = startRound(newBoard); // begins the first round's "GET READY" intro; newBoard() runs after each round's summary
   emitToServer({ type: "board", level: firstLevel, deadline });
 }
@@ -66,7 +69,11 @@ function connectTikTok(): void {
     const e = JSON.parse(msg.data) as GameEvent; // later: validate with zod
     switch (e.type) {
       case "guess":
-        handleGuess(e.user, e.text);
+        // A trivia interlude (features/trivia/trivia.ts) borrows the chat channel for A/B/C/D
+        // answers instead of board-word guesses — round.phase is already "complete" the whole
+        // time it's active, so there's no crossword guess this could collide with.
+        if (isTriviaActive()) handleTriviaAnswer(e.user, e.text);
+        else handleGuess(e.user, e.text);
         break;
       case "powerUp":
         handlePowerUp(e);
@@ -78,6 +85,10 @@ function connectTikTok(): void {
         // The control tab already applied its own board choice locally (progression.ts's
         // newBoard) before publishing it — only the broadcast view needs to react to it.
         if (obsMode) applyBoardBroadcast(e.level, e.deadline);
+        break;
+      case "trivia":
+        // Same "control tab already applied it locally, only the broadcast view needs this" shape as "board".
+        if (obsMode) applyTriviaBroadcast(e.question, e.deadline);
         break;
       case "forceTimeUp":
         // Unlike "board", both sides apply this the same way — the control tab relies on this

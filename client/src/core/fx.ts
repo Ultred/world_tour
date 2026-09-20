@@ -54,6 +54,10 @@ let fxDirty = false;
 const MAX_FX_PARTICLES = 450;
 
 const pickColor = () => GIFT_COLORS[Math.floor(Math.random() * GIFT_COLORS.length)]!;
+// Gold-only palette for the Golden Tile modifier's solve celebration, kept separate from the
+// mixed GIFT_COLORS so its burst reads as "coins", not just another gift-tile sparkle.
+const GOLD_COLORS = ["#ffd166", "#ffe9a8", "#ffb703", "#fff4d6"];
+const pickGoldColor = () => GOLD_COLORS[Math.floor(Math.random() * GOLD_COLORS.length)]!;
 
 function pushParticle(p: FxParticle): void {
   if (fxParticles.length >= MAX_FX_PARTICLES) return;
@@ -68,6 +72,17 @@ export function spawnSparkles(x: number, y: number, n: number): void {
     pushParticle({
       kind: "star", x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 30 * FX, g: 170 * FX,
       life: 0, max: rand(0.5, 0.9), size: rand(3, 6.5) * FX, color: pickColor(),
+    });
+  }
+}
+
+/** Coin-shower burst for the Golden Tile modifier's solve — bigger and gold-only, unlike spawnSparkles' mixed-colour gift pop. */
+export function spawnGoldSparkles(x: number, y: number, n: number): void {
+  for (let i = 0; i < n; i++) {
+    const a = rand(0, Math.PI * 2), sp = rand(50, 170) * FX;
+    pushParticle({
+      kind: "star", x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 50 * FX, g: 160 * FX,
+      life: 0, max: rand(0.6, 1.1), size: rand(4, 8) * FX, color: pickGoldColor(),
     });
   }
 }

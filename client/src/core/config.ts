@@ -29,3 +29,19 @@ export const GIFT_BANNER_MS = 3200; // how long the reward banner stays up
 export const FEAT_PLAQUE_MS = 2900;
 export const GIFT_COLORS = ["#ffd166", "#f5923a", "#ff9d7a", "#8ee6c8", "#fff4d6", "#a8d0ff"];
 export const FX = 2; // particle size/speed multiplier for the bigger stage
+
+// Rotating round modifiers (features/round/modifiers.ts) — see WORD_TOUR_PROTOTYPE.md's backlog.
+export const SPEED_ROUND_SEC = 45;
+export const SPEED_ROUND_MULTIPLIER = 2;
+export const GOLDEN_TILE_BONUS = 10;
+/** Chance any given board rolls a modifier at all — the rest play a normal round, so the twist stays a twist. */
+export const MODIFIER_CHANCE = 0.35;
+/** Speed Round board-word length cap — keeps a 45s round actually finishable. */
+export const SPEED_ROUND_MAX_WORD_LEN = 5;
+
+// Trivia interlude (features/trivia/) — a between-boards A/B/C/D definition round, not a modifier.
+export const TRIVIA_CHANCE = 0.3;
+export const TRIVIA_DURATION_SEC = 18;
+export const TRIVIA_CORRECT_POINTS = 15;
+/** How long the correct-answer highlight holds before advancing to the next board. */
+export const TRIVIA_REVEAL_MS = 2600;

@@ -17,6 +17,11 @@
       <!-- Stream-wide combo badge — a sibling of lbLeader, not a child: renderLeader() replaces
            lbLeader's children wholesale on every render, which would wipe out anything nested inside it. -->
       <div class="streak-badge hidden" id="streakBadge"></div>
+      <!-- Rotating round modifier indicator — mirrors streakBadge's placement/pattern, opposite corner. -->
+      <div class="modifier-chip hidden" id="modifierChip">
+        <span class="modifier-chip-icon" id="modifierChipIcon"></span>
+        <span class="modifier-chip-text" id="modifierChipText"></span>
+      </div>
     </div>
 
     <!-- Round timer: progress bar + m:ss, between the leaderboard and the board -->
@@ -28,8 +33,15 @@
     <div class="board-area" id="boardArea">
       <canvas id="board"></canvas>
 
-      <!-- "GET READY" intro, shown briefly before each round starts -->
-      <div class="round-intro" id="roundIntro"><span>GET READY</span></div>
+      <!-- "GET READY" intro, shown briefly before each round starts — swaps to the round's themed
+           modifier banner (if any) via roundHud.ts's showIntro(); data-modifier drives the per-modifier
+           colours/glow in style.css. -->
+      <div class="round-intro" id="roundIntro">
+        <div class="round-intro-card">
+          <span class="round-intro-icon" id="roundIntroIcon"></span>
+          <span class="round-intro-text" id="roundIntroText">GET READY</span>
+        </div>
+      </div>
 
       <!-- "TIME'S UP" banner, shown when the round clock runs out -->
       <div class="timeup-banner" id="timeUpBanner">TIME'S UP</div>
@@ -40,6 +52,15 @@
         <ol class="round-summary-list" id="roundSummaryList"></ol>
         <div class="round-summary-featured" id="roundSummaryFeatured"></div>
         <div class="round-summary-solvers" id="roundSummarySolvers"></div>
+      </div>
+
+      <!-- Between-boards trivia interlude: one word's definition, four lettered choices —
+           see features/trivia/trivia.ts. Populated/shown by triviaHud.ts. -->
+      <div class="trivia-card" id="triviaCard">
+        <div class="trivia-kicker">❓ GUESS THE WORD</div>
+        <div class="trivia-definition" id="triviaDefinition"></div>
+        <div class="trivia-choices" id="triviaChoices"></div>
+        <div class="trivia-hint">Comment A, B, C, or D!</div>
       </div>
     </div>
 
@@ -160,6 +181,10 @@
   <section class="dev-box">
     <h3 class="dev-box-title"><span class="dev-box-icon">💬</span>Simulate a viewer</h3>
     <p class="dev-hint">Guess a word using only the letters shown</p>
+    <p class="dev-hint dev-word-label">Board words</p>
+    <p class="dev-word-list" id="boardWordsList">—</p>
+    <p class="dev-hint dev-word-label">Bonus words</p>
+    <p class="dev-word-list dev-word-list-bonus" id="bonusWordsList">—</p>
     <input id="usernameInput" placeholder="username" value="viewer1">
     <input id="guessInput" placeholder="type a word guess and press Enter">
     <button id="newBoardBtn" class="btn btn-block">🆕 New Board</button>

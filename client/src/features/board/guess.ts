@@ -1,12 +1,13 @@
 import { cleanGuessWord } from "../../../../shared/guessWord";
 import type { TikTokUser } from "../../../../shared/types";
 import { audio } from "../../audio";
-import { BIG_JUMP_MS, FEATURED_STAGGER_MS, JUMP_DURATION_MS, REVEAL_STAGGER_MS } from "../../core/config";
+import { BIG_JUMP_MS, FEATURED_STAGGER_MS, GOLDEN_TILE_BONUS, JUMP_DURATION_MS, REVEAL_STAGGER_MS, SPEED_ROUND_MULTIPLIER } from "../../core/config";
 import { log } from "../../dev/log";
 import { getPlayer, state, stageLater } from "../../game/state";
 import type { SolveOptions, SolveResult } from "../../game/types";
 import { renderLeaderboard, renderStreakBadge } from "../leaderboard/leaderboard";
 import { registerSolve } from "../leaderboard/streak";
+import { activeModifier } from "../round/modifiers";
 import { awardPoints, finishRoundNow, isPlaying, round } from "../round/round";
 import { celebrateSolve } from "./celebrations";
 import { flashNearBoard } from "./toast";
@@ -20,6 +21,11 @@ export function solvePlacement(user: TikTokUser, word: string, opts: SolveOption
   placement.solved = true;
   placement.solvedBy = player.id;
 
+  // Rotating round modifiers (features/round/modifiers.ts) — deterministically picked per
+  // level, so both the control tab and the ?obs=1 broadcast view apply the identical rule.
+  const isGolden = activeModifier.modifier === "goldenTile" && word === activeModifier.goldenWord;
+  const longWordHuntZeroed = activeModifier.modifier === "longWordHunt" && word.length < 5;
+
   const now = Date.now();
   const start = now + (opts.delay || 0);
   const stagger = opts.stagger || REVEAL_STAGGER_MS;
@@ -27,16 +33,22 @@ export function solvePlacement(user: TikTokUser, word: string, opts: SolveOption
   for (let i = 0; i < word.length; i++) {
     const c = placement.cells[i]!;
     const existing = state.grid[c.y]![c.x];
+    const isGoldenTile = isGolden && i === activeModifier.goldenIndex;
     if (existing) {
-      // tile already shown (crossing word / hint): keep its timing
-      state.grid[c.y]![c.x] = { ...existing, owner: player.id };
+      // tile already shown (crossing word / hint): keep its timing — unless this is the golden
+      // tile, which gets the gift-glow "surprise on reveal" flash restarted fresh even though
+      // the letter itself was already visible from an earlier crossing word.
+      state.grid[c.y]![c.x] = isGoldenTile
+        ? { ...existing, owner: player.id, fx: true, golden: true, burst: false, revealAnimStart: now }
+        : { ...existing, owner: player.id };
       continue;
     }
     state.grid[c.y]![c.x] = {
       letter: word[i]!,
       owner: player.id,
       revealAnimStart: start + newIndex * stagger,
-      fx: opts.fx || false,
+      fx: isGoldenTile ? true : opts.fx || false,
+      golden: isGoldenTile,
       big: !!opts.big,
     };
     audio.tile((start + newIndex * stagger - now) / 1000, newIndex, opts.fx === "soft", !!opts.big);
@@ -44,7 +56,9 @@ export function solvePlacement(user: TikTokUser, word: string, opts: SolveOption
   }
   state.solvedCount++;
   const isFeatured = word === state.targetWord;
-  const points = Math.round((word.length + (isFeatured ? 10 : 0)) * (opts.multiplier ?? 1));
+  const points = longWordHuntZeroed
+    ? 0
+    : Math.round((word.length + (isFeatured ? 10 : 0) + (isGolden ? GOLDEN_TILE_BONUS : 0)) * (opts.multiplier ?? 1));
   awardPoints(user, points);
   const endsAt = start + Math.max(0, newIndex - 1) * stagger + (opts.big ? BIG_JUMP_MS : JUMP_DURATION_MS);
   return { points, isFeatured, endsAt };
@@ -85,7 +99,9 @@ export function handleGuess(user: TikTokUser, rawWord: string, via: "comment" | 
     }
     // Streaks are stream-wide, not per-player, and only organic chat guesses extend/benefit —
     // a gift-forced reveal (via === "gift") neither breaks nor boosts it. See features/leaderboard/streak.ts.
-    const multiplier = via === "comment" ? registerSolve() : 1;
+    // Speed Round's 2x is folded into the same multiplier — solvePlacement only ever sees the
+    // final combined number, it doesn't need its own "is this a Speed Round" branch.
+    const multiplier = (via === "comment" ? registerSolve() : 1) * (activeModifier.modifier === "speed" ? SPEED_ROUND_MULTIPLIER : 1);
     const long = word.length >= 5;
     const r = solvePlacement(
       user,

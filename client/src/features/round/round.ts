@@ -1,13 +1,16 @@
 import type { TikTokUser } from "../../../../shared/types";
 import { audio } from "../../audio";
+import { SPEED_ROUND_SEC } from "../../core/config";
 import { log } from "../../dev/log";
 import { getPlayer, state, stageLater } from "../../game/state";
 import { saveScores } from "../leaderboard/persistence";
+import { activeModifier } from "./modifiers";
 import {
   hideIntro,
   hideRoundSummary,
   hideTimeUpBanner,
   paintTimerBar,
+  renderModifierChip,
   showIntro,
   showRoundSummary,
   showTimeUpBanner,
@@ -49,8 +52,10 @@ export function getDurationOverrideSec(): number | null {
   return durationOverrideSec;
 }
 
+// Dev override always wins (it's an explicit manual-testing knob); otherwise a Speed Round
+// modifier shortens the round to SPEED_ROUND_SEC instead of the normal formula.
 export const roundDurationMs = (wordCount: number): number =>
-  (durationOverrideSec ?? TIMER.baseSec + TIMER.perWordSec * wordCount) * 1000;
+  (durationOverrideSec ?? (activeModifier.modifier === "speed" ? SPEED_ROUND_SEC : TIMER.baseSec + TIMER.perWordSec * wordCount)) * 1000;
 
 export type RoundPhase = "intro" | "playing" | "timeUp" | "complete" | "summary";
 
@@ -165,7 +170,7 @@ export function startRound(onEnd: () => void, deadline?: number): number {
 
   hideTimeUpBanner();
   hideRoundSummary();
-  showIntro();
+  showIntro(activeModifier.modifier);
   stageLater(Math.max(0, resolvedDeadline - durationMs - Date.now()), () => beginPlaying(resolvedDeadline));
 
   return resolvedDeadline;
@@ -263,12 +268,16 @@ export function finishRoundNow(reason: "complete" | "timeUp"): void {
   });
 }
 
-/** Drives the timer HUD (bar + m:ss, colour shift, last-10s pulse + tick). Called every animation frame. */
+/** Drives the timer HUD (bar + m:ss, colour shift, last-10s pulse + tick) and the persistent
+ * modifier chip. Called every animation frame — the chip's visibility tracks the "playing"
+ * phase automatically here, the same way the timer bar already does. */
 export function renderRoundHud(now = Date.now()): void {
   if (round.phase !== "playing") {
     paintTimerBar({ visible: false, ratio: 0, label: "0:00", color: "green", pulsing: false });
+    renderModifierChip(null);
     return;
   }
+  renderModifierChip(activeModifier.modifier);
   const remaining = remainingMs(now);
   const ratio = round.durationMs > 0 ? remaining / round.durationMs : 0;
   const totalSec = Math.ceil(remaining / 1000);

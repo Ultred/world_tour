@@ -77,31 +77,37 @@ export interface AudioEngine {
   roundSummary(): void;
 }
 
-// Background music: a looping chill chord progression (soft pad + music-box
-// arpeggio + bass). Effects: short synthesised sounds for every game event.
-// Everything is Web Audio API — no audio files. Browsers only allow sound
-// after a click/key press, so audio starts on the first interaction (or via
-// the Sound button) via `unlock()`.
+// Real music tracks (client/src/audio/music/*.m4a) — Vite bundles these as hashed static
+// assets automatically at build time; drop a new file in that folder and it's picked up with
+// no code change here. Background music plays through this playlist instead of a synthesised
+// loop. Effects (tile pops, solves, fanfares, etc.) stay Web Audio API — short synthesised
+// sounds for every game event. Browsers only allow sound after a click/key press, so audio
+// starts on the first interaction (or via the Sound button) via `unlock()`.
+const musicModules = import.meta.glob("./music/*.{m4a,mp3}", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const TRACK_URLS = Object.values(musicModules);
+
+function shuffle<T>(arr: readonly T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j]!, a[i]!];
+  }
+  return a;
+}
+
 function createAudioEngine(): AudioEngine {
   const state: AudioState = { enabled: true, music: true, sfx: true, musicVol: 0.3, sfxVol: 0.9 };
   let ctx: AudioContext | null = null;
   let master: GainNode, musicBus: GainNode, sfxBus: GainNode, noiseBuf: AudioBuffer;
-  let musicTimer: ReturnType<typeof setInterval> | null = null;
-  let nextTime = 0;
-  let step = 0;
+  let musicEl: HTMLAudioElement | null = null;
+  // Freshly shuffled each time we've played through the whole set, so background music cycles
+  // through every track before any repeat instead of the old fixed 4-chord loop repeating from
+  // the first bar every ~5 seconds.
+  let playOrder: string[] = [];
+  let playIndex = 0;
 
-  const BPM = 92;
-  const STEP = 60 / BPM / 2; // one step = an eighth note
   const midi = (n: number) => 440 * Math.pow(2, (n - 69) / 12);
   const PENTA = [72, 74, 76, 79, 81]; // C major pentatonic: any run of tiles sounds pleasant
-  const CHORDS: { root: number; notes: number[] }[] = [
-    // Am - F - C - G
-    { root: 45, notes: [57, 60, 64] },
-    { root: 41, notes: [53, 57, 60] },
-    { root: 48, notes: [55, 60, 64] },
-    { root: 43, notes: [55, 59, 62] },
-  ];
-  const ARP = [0, 2, 1, 2, 3, 2, 1, 2];
 
   const ready = () => !!ctx && ctx.state === "running" && state.enabled && state.sfx;
 
@@ -166,60 +172,23 @@ function createAudioEngine(): AudioEngine {
     tone({ f: midi(100), t: t + 0.08, d: 0.55, v: 0.12 });
   };
 
-  // ---- background music ----
-  function pad(notes: number[], t: number, dur: number): void {
-    const lp = ctx!.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 800;
-    const g = ctx!.createGain();
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(0.03, t + 0.7);
-    g.gain.setValueAtTime(0.03, t + dur - 0.2);
-    g.gain.linearRampToValueAtTime(0.0001, t + dur + 0.6);
-    lp.connect(g);
-    g.connect(musicBus);
-    notes.forEach((n) =>
-      [-6, 6].forEach((det) => {
-        // two slightly detuned saws per note = warm, wide pad
-        const o = ctx!.createOscillator();
-        o.type = "sawtooth";
-        o.frequency.value = midi(n);
-        o.detune.value = det;
-        o.connect(lp);
-        o.start(t);
-        o.stop(t + dur + 0.7);
-      }),
-    );
-  }
-  function scheduleStep(n: number, t: number): void {
-    const ch = CHORDS[Math.floor(n / 8) % CHORDS.length]!;
-    const s = n % 8;
-    if (s === 0) pad(ch.notes, t, STEP * 8);
-    if (s === 0 || s === 4) tone({ f: midi(ch.root), at: t, d: 1.4, a: 0.03, v: s === 0 ? 0.2 : 0.12, dest: musicBus });
-    const pool = [...ch.notes.map((x) => x + 12), ch.notes[0]! + 24];
-    if (s !== 7) {
-      tone({ f: midi(pool[ARP[s]!]!), at: t, d: 0.6, v: s % 4 === 0 ? 0.1 : 0.06, type: "triangle", lp: 2400, dest: musicBus });
+  // ---- background music: real tracks, playlist-style ----
+  function nextTrack(): void {
+    if (!musicEl || !TRACK_URLS.length) return;
+    if (playIndex >= playOrder.length) {
+      playOrder = shuffle(TRACK_URLS);
+      playIndex = 0;
     }
-  }
-  function tickMusic(): void {
-    const now = ctx!.currentTime;
-    if (nextTime < now) nextTime = now + 0.05; // e.g. the tab was in the background: don't burst-play the backlog
-    while (nextTime < now + 0.8) {
-      scheduleStep(step++, nextTime);
-      nextTime += STEP;
-    }
+    musicEl.src = playOrder[playIndex++]!;
+    if (state.music && state.enabled) void musicEl.play().catch(() => {});
   }
   function syncMusic(): void {
-    const want = !!ctx && state.music && state.enabled;
-    if (want && !musicTimer) {
-      nextTime = ctx!.currentTime + 0.1;
-      musicTimer = setInterval(tickMusic, 150);
-      tickMusic();
+    const want = !!ctx && !!musicEl && state.music && state.enabled;
+    if (want && musicEl!.paused) {
+      if (!musicEl!.src) nextTrack();
+      else void musicEl!.play().catch(() => {});
     }
-    if (!want && musicTimer) {
-      clearInterval(musicTimer);
-      musicTimer = null;
-    }
+    if (!want && musicEl && !musicEl.paused) musicEl.pause();
   }
   // ---- levels & lifecycle ----
   function applyLevels(): void {
@@ -244,6 +213,10 @@ function createAudioEngine(): AudioEngine {
       noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
       const data = noiseBuf.getChannelData(0);
       for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+      musicEl = new Audio();
+      musicEl.crossOrigin = "anonymous";
+      musicEl.addEventListener("ended", nextTrack);
+      ctx.createMediaElementSource(musicEl).connect(musicBus);
     }
     void ctx.resume();
     applyLevels();

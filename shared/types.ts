@@ -94,6 +94,35 @@ export interface BoardEvent {
 }
 
 /**
+ * One A/B/C/D trivia question — produced offline by `scripts/generate-trivia/` and shipped as
+ * `trivia.generated.json`, the same "generate once, ship as static JSON" pattern as `Level`.
+ * `choices` is already shuffled and `correctIndex` already resolved at generation time, so the
+ * client never needs to do its own shuffling to stay in sync across screens.
+ */
+export interface TriviaQuestion {
+  /** The answer word — not shown to the client until the reveal beat. */
+  word: string;
+  /** First-sense definition, cleaned of quoted examples (see the generator). */
+  definition: string;
+  /** Four words, one of which is `word`. */
+  choices: string[];
+  correctIndex: number;
+}
+
+/**
+ * Broadcast by the control tab when a between-boards trivia interlude starts (see
+ * `features/trivia/trivia.ts`'s `startTriviaInterlude`) — same "director decides, everyone else
+ * mirrors" role as `BoardEvent`, except the question itself is new information that can't be
+ * derived from anything already synced, so (unlike the round modifiers) it has to travel over
+ * the wire explicitly.
+ */
+export interface TriviaEvent {
+  type: "trivia";
+  question: TriviaQuestion;
+  deadline: number;
+}
+
+/**
  * Dev-only: the control tab's "Force Time's Up" button, relayed so the `?obs=1` broadcast
  * view ends the round at the same instant instead of continuing to count down against the
  * original deadline until the next `BoardEvent` arrives. Never fired by real TikTok activity.
@@ -112,4 +141,11 @@ export interface ResetLeaderboardEvent {
 }
 
 /** The client-facing union — what actually arrives over the WebSocket. */
-export type GameEvent = GuessEvent | PowerUpEvent | StatusEvent | BoardEvent | ForceTimeUpEvent | ResetLeaderboardEvent;
+export type GameEvent =
+  | GuessEvent
+  | PowerUpEvent
+  | StatusEvent
+  | BoardEvent
+  | TriviaEvent
+  | ForceTimeUpEvent
+  | ResetLeaderboardEvent;

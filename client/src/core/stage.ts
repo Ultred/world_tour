@@ -1,15 +1,19 @@
 import { drawBoard } from "../features/board/board";
 import { renderRoundHud, tickRound } from "../features/round/round";
+import { renderTriviaHud } from "../features/trivia/trivia";
 import { state } from "../game/state";
 import { BOARD_H, BOARD_W, STAGE_H, STAGE_W } from "./config";
 import { dom } from "./dom";
 import { drawFx } from "./fx";
 
-/** The app's single render loop — drives the round timer, the board, and fx together every frame. */
+/** The app's single render loop — drives the round timer, the board, and fx together every frame.
+ * `renderTriviaHud` runs after `renderRoundHud` and repaints the (idle, hidden-by-round.ts) timer
+ * bar with the trivia countdown whenever an interlude is active — see features/trivia/trivia.ts. */
 export function animLoop(): void {
   const now = Date.now();
   tickRound(now);
   renderRoundHud(now);
+  renderTriviaHud(now);
   drawBoard();
   drawFx(now);
   requestAnimationFrame(animLoop);

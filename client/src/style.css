@@ -11,6 +11,12 @@ body.obs-mode #soundBtn,
 body.obs-mode #panelToggle,
 body.obs-mode #devPanel { display: none !important; }
 
+/* Trivia interlude (features/trivia/triviaHud.ts) reads as its own round, not a popup over the
+   old one — the leftover crossword board/wheel/gift-guide fade out while it's up. */
+body.trivia-active #board,
+body.trivia-active .letter-wheel-wrap,
+body.trivia-active .gift-guide { opacity: 0; transition: opacity .3s; pointer-events: none; }
+
 /* ================= Stage: fixed 1080x1920, scaled to fit any window ================= */
 #frame { position: relative; flex: none; overflow: hidden; }
 .stage {
@@ -30,21 +36,46 @@ body.obs-mode #devPanel { display: none !important; }
 .board-area { position: absolute; left: 0; top: 264px; width: 1080px; height: 720px; }
 
 /* ================= Round intro / time's up / summary overlays (inside board-area) ================= */
-.round-intro, .timeup-banner, .round-summary {
+.round-intro, .timeup-banner, .round-summary, .trivia-card {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.9); z-index: 28;
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .3s, transform .3s, visibility 0s .3s;
 }
-.round-intro.show, .timeup-banner.show, .round-summary.show {
+.round-intro.show, .timeup-banner.show, .round-summary.show, .trivia-card.show {
   opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); transition: opacity .3s, transform .3s;
 }
-.round-intro span {
-  display: block; padding: 22px 54px; border-radius: 28px; font-size: 56px; font-weight: 900; letter-spacing: 3px;
-  color: #fff; background: rgba(10,12,24,.75); border: 3px solid rgba(255,209,102,.7);
+.round-intro-card {
+  display: flex; align-items: center; gap: 20px; width: max-content; max-width: 980px;
+  padding: 20px 50px 20px 26px; border-radius: 30px;
+  background: linear-gradient(135deg, rgba(22,24,44,.92), rgba(8,10,20,.88));
+  border: 3px solid rgba(255,209,102,.7);
   box-shadow: 0 0 40px rgba(255,209,102,.35), 0 12px 28px rgba(0,0,0,.5);
+  transition: background .25s, border-color .25s, box-shadow .25s;
 }
-.round-intro.show span { animation: introPulse 1s ease-in-out infinite; }
+.round-intro-icon {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  width: 66px; height: 66px; border-radius: 50%; font-size: 34px;
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.4), rgba(255,255,255,0) 70%), rgba(255,255,255,.14);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.3);
+}
+.round-intro-icon:empty { display: none; }
+.round-intro-text { font-size: 52px; font-weight: 900; letter-spacing: 2px; line-height: 1.08; color: #fff; white-space: nowrap; }
+.round-intro.show .round-intro-card { animation: introPulse 1s ease-in-out infinite; }
 @keyframes introPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+/* Per-modifier theming — see features/round/modifiers.ts's MODIFIER_THEME for the source colours. */
+.round-intro[data-modifier="speed"] .round-intro-card {
+  border-color: #ffce3d; background: linear-gradient(135deg, rgba(78,48,6,.94), rgba(18,12,4,.9));
+  box-shadow: 0 0 46px rgba(255,150,60,.45), 0 12px 28px rgba(0,0,0,.5);
+}
+.round-intro[data-modifier="goldenTile"] .round-intro-card {
+  border-color: #ffe089; background: linear-gradient(135deg, rgba(74,54,10,.94), rgba(18,14,4,.9));
+  box-shadow: 0 0 46px rgba(255,209,102,.45), 0 12px 28px rgba(0,0,0,.5);
+}
+.round-intro[data-modifier="longWordHunt"] .round-intro-card {
+  border-color: #8fd7ff; background: linear-gradient(135deg, rgba(8,44,78,.94), rgba(6,14,26,.9));
+  box-shadow: 0 0 46px rgba(120,190,255,.4), 0 12px 28px rgba(0,0,0,.5);
+}
 
 .timeup-banner {
   padding: 20px 48px; border-radius: 24px; font-size: 52px; font-weight: 900; letter-spacing: 2px; color: #fff;
@@ -65,6 +96,31 @@ body.obs-mode #devPanel { display: none !important; }
 }
 .round-summary-list li b { color: #ffd166; }
 .round-summary-featured, .round-summary-solvers { font-size: 18px; color: #c9d4e6; margin-top: 4px; }
+
+/* Between-boards trivia interlude — reuses .round-summary's dark-gradient-card visual language
+   (see features/trivia/trivia.ts). First pass: functional, can get its own themed treatment later
+   the same way the modifier banners did. */
+.trivia-card {
+  width: 1000px; padding: 48px 56px; border-radius: 32px; text-align: center;
+  background: linear-gradient(180deg, #2c2b54, #1b1b36); border: 3px solid rgba(255,224,150,.55);
+  box-shadow: 0 0 50px rgba(255,209,102,.4), 0 16px 32px rgba(0,0,0,.5);
+}
+.trivia-kicker { font-size: 32px; font-weight: 900; color: #ffd166; letter-spacing: 2px; margin-bottom: 18px; }
+.trivia-definition { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 36px; }
+.trivia-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 26px; }
+.trivia-choice {
+  display: flex; align-items: center; gap: 18px; padding: 22px 26px; border-radius: 18px;
+  background: rgba(255,255,255,.06); border: 2px solid transparent; transition: background .2s, border-color .2s, opacity .2s;
+}
+.trivia-choice-letter {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  width: 48px; height: 48px; border-radius: 50%; font-weight: 900; font-size: 26px; color: #1b1b36;
+  background: #ffd166;
+}
+.trivia-choice-word { font-size: 32px; font-weight: 700; color: #fff; text-align: left; }
+.trivia-choice.correct { background: rgba(120,220,150,.22); border-color: #7adc96; }
+.trivia-choice.dim { opacity: .45; }
+.trivia-hint { font-size: 24px; color: #c9d4e6; }
 
 /* ================= Leaderboard: pinned leader + scrolling ticker ================= */
 .leaderboard { position: absolute; left: 32px; right: 32px; top: 64px; height: 168px; display: flex; gap: 16px; z-index: 20; }
@@ -116,6 +172,27 @@ body.obs-mode #devPanel { display: none !important; }
   transition: opacity .2s, transform .2s;
 }
 .streak-badge.hidden { opacity: 0; transform: scale(.8); pointer-events: none; }
+
+/* Rotating round modifier indicator — mirrors .streak-badge's placement/pattern, opposite corner.
+   Text runs longer ("2× Speed Round" etc.) than the streak badge's "🔥 x3", so a smaller font.
+   Colour is per-modifier (see MODIFIER_THEME in features/round/modifiers.ts, applied via data-modifier). */
+.modifier-chip {
+  position: absolute; top: -20px; left: 8px; z-index: 21;
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 18px 6px 8px; border-radius: 999px; font-size: 22px; font-weight: 800; color: #fff; white-space: nowrap;
+  background: linear-gradient(135deg, #ffe089, #f5923a); box-shadow: 0 0 24px rgba(245,146,58,.55), 0 6px 14px rgba(0,0,0,.4);
+  transition: opacity .2s, transform .2s, background .25s, box-shadow .25s;
+}
+.modifier-chip-icon {
+  display: flex; align-items: center; justify-content: center; flex: none;
+  width: 28px; height: 28px; border-radius: 50%; font-size: 16px;
+  background: rgba(255,255,255,.28);
+}
+.modifier-chip.hidden { opacity: 0; transform: scale(.8); pointer-events: none; }
+
+.modifier-chip[data-modifier="speed"] { background: linear-gradient(135deg, #ffce3d, #ff7a3d); box-shadow: 0 0 24px rgba(255,150,60,.55), 0 6px 14px rgba(0,0,0,.4); }
+.modifier-chip[data-modifier="goldenTile"] { background: linear-gradient(135deg, #ffe089, #f5923a); box-shadow: 0 0 24px rgba(255,209,102,.55), 0 6px 14px rgba(0,0,0,.4); }
+.modifier-chip[data-modifier="longWordHunt"] { background: linear-gradient(135deg, #8fd7ff, #3d8bff); box-shadow: 0 0 24px rgba(120,190,255,.55), 0 6px 14px rgba(0,0,0,.4); }
 
 .lb-ticker {
   flex: 1; min-width: 0; overflow: hidden;
@@ -421,6 +498,12 @@ body.obs-mode #devPanel { display: none !important; }
 }
 .dev-box-icon { font-size: 15px; line-height: 1; filter: drop-shadow(0 1px 1px rgba(0,0,0,.4)); }
 .dev-hint { margin: 0 0 9px; font-size: 13px; line-height: 1.45; color: #9aa2c9; }
+.dev-word-label { margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: #6b7397; }
+.dev-word-list {
+  margin: 0 0 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; line-height: 1.5;
+  background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.1); color: #dfe4fb; word-break: break-word;
+}
+.dev-word-list-bonus { color: #9aa2c9; font-size: 12px; max-height: 72px; overflow-y: auto; }
 
 .dev-row { display: flex; gap: 7px; }
 .dev-row input { flex: 1; margin: 0; }

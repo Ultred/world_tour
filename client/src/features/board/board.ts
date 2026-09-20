@@ -1,8 +1,9 @@
 import { BOARD_H, BOARD_TOP, BOARD_W, BIG_JUMP_MS, GAP, JUMP_DURATION_MS, TILE, TILE_RADIUS } from "../../core/config";
 import { ctx } from "../../core/dom";
-import { spawnSparkles } from "../../core/fx";
+import { spawnGoldSparkles, spawnSparkles } from "../../core/fx";
 import { state } from "../../game/state";
 import type { BoardMetrics } from "../../game/types";
+import { activeModifier } from "../round/modifiers";
 
 export function roundRectPath(x: number, y: number, w: number, h: number, r: number): void {
   ctx.beginPath();
@@ -40,6 +41,9 @@ export function drawBoard(): void {
       const px = offsetX + x * step, py = offsetY + y * step;
       const cell = state.grid[y]?.[x] ?? null;
       const visible = !!cell && now >= cell.revealAnimStart;
+      // Golden Tile modifier: the target cell is marked while still hidden (letter stays
+      // secret) so viewers know exactly where to aim — see features/round/modifiers.ts.
+      const isGoldenHidden = !visible && activeModifier.goldenCell?.x === x && activeModifier.goldenCell?.y === y;
 
       let jumpOffset = 0, scale = 1;
       if (visible && cell) {
@@ -71,11 +75,60 @@ export function drawBoard(): void {
           : cell!.owner
             ? (state.players[cell!.owner]?.color ?? "#f5923a")
             : "#f5923a"
-        : "rgba(255,255,255,0.75)";
+        : isGoldenHidden
+          ? "#ffd166"
+          : "rgba(255,255,255,0.75)";
       ctx.fill();
 
-      // Gift tiles: a golden flash that fades into the owner's colour + a sparkle burst
-      if (visible && cell!.fx) {
+      // A gentle pulsing glow on top of the gold fill, so it reads as "special" from a glance
+      // rather than just a differently-coloured tile.
+      if (isGoldenHidden) {
+        const pulse = 0.5 + 0.5 * Math.sin(now / 260);
+        ctx.shadowColor = `rgba(255,209,102,${0.5 + 0.4 * pulse})`;
+        ctx.shadowBlur = tile * (0.22 + 0.18 * pulse);
+        ctx.shadowOffsetY = 0;
+        roundRectPath(px, py, tile, tile, TILE_RADIUS);
+        ctx.fillStyle = "#ffd166";
+        ctx.fill();
+      }
+
+      // Golden Tile modifier's own letter: a coin-flash + rotating sunburst, distinct from the
+      // plain gift shimmer below — this is the modifier's payoff moment, so it should read as
+      // its own thing rather than just another reveal animation.
+      if (visible && cell!.golden) {
+        const e = now - cell!.revealAnimStart;
+        if (!cell!.burst) {
+          cell!.burst = true;
+          spawnGoldSparkles(cx, BOARD_TOP + cy, 18);
+        }
+        const dur = 1100;
+        if (e < dur) {
+          const a = 1 - e / dur;
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(now / 220);
+          ctx.globalAlpha = a * 0.85;
+          ctx.strokeStyle = "#ffe9a8";
+          ctx.lineCap = "round";
+          ctx.lineWidth = tile * 0.05;
+          const rayLen = tile * (0.55 + 0.4 * (1 - a));
+          for (let i = 0; i < 8; i++) {
+            const ang = (i / 8) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.moveTo(Math.cos(ang) * tile * 0.42, Math.sin(ang) * tile * 0.42);
+            ctx.lineTo(Math.cos(ang) * rayLen, Math.sin(ang) * rayLen);
+            ctx.stroke();
+          }
+          ctx.restore();
+          ctx.shadowColor = `rgba(255,183,3,${0.95 * a})`;
+          ctx.shadowBlur = tile * (0.3 + 0.55 * a);
+          ctx.shadowOffsetY = 0;
+          roundRectPath(px, py, tile, tile, TILE_RADIUS);
+          ctx.fillStyle = `rgba(255,214,102,${0.85 * a})`;
+          ctx.fill();
+        }
+      } else if (visible && cell!.fx) {
+        // Gift tiles: a golden flash that fades into the owner's colour + a sparkle burst
         const e = now - cell!.revealAnimStart;
         if (!cell!.burst) {
           cell!.burst = true;
