@@ -109,15 +109,22 @@ body.trivia-active .gift-guide { opacity: 0; transition: opacity .3s; pointer-ev
 .trivia-definition { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 36px; }
 .trivia-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 26px; }
 .trivia-choice {
-  display: flex; align-items: center; gap: 18px; padding: 22px 26px; border-radius: 18px;
+  display: flex; flex-direction: column; gap: 10px; padding: 22px 26px; border-radius: 18px;
   background: rgba(255,255,255,.06); border: 2px solid transparent; transition: background .2s, border-color .2s, opacity .2s;
 }
+.trivia-choice-top { display: flex; align-items: center; gap: 18px; }
 .trivia-choice-letter {
   display: flex; align-items: center; justify-content: center; flex: none;
   width: 48px; height: 48px; border-radius: 50%; font-weight: 900; font-size: 26px; color: #1b1b36;
   background: #ffd166;
 }
 .trivia-choice-word { font-size: 32px; font-weight: 700; color: #fff; text-align: left; }
+/* Live "who picked this" roster — filled in by triviaHud.ts as comments come in, held with no
+   correct/wrong colour until the reveal (see features/trivia/trivia.ts). */
+.trivia-choice-names {
+  min-height: 1.3em; padding-left: 66px; font-size: 17px; font-weight: 600; color: #b7c3e0;
+  text-align: left; line-height: 1.3; word-break: break-word;
+}
 .trivia-choice.correct { background: rgba(120,220,150,.22); border-color: #7adc96; }
 .trivia-choice.dim { opacity: .45; }
 .trivia-hint { font-size: 24px; color: #c9d4e6; }

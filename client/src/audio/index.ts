@@ -71,6 +71,9 @@ export interface AudioEngine {
   rankUp(): void;
   /** Countdown blip — the round timer's last-10s warning. */
   tick(): void;
+  /** Neutral percussive click for "answer locked in" (trivia) — deliberately non-melodic so it
+   * can never read as a correct/wrong signal the way the tonal SFX would. */
+  pick(): void;
   /** Buzzer when the round clock runs out. */
   timeUp(): void;
   /** Short duck of the music under the round-summary panel. */
@@ -335,6 +338,10 @@ function createAudioEngine(): AudioEngine {
     tick() {
       if (!ready()) return;
       tone({ f: midi(84), d: 0.08, v: 0.14, type: "triangle" });
+    },
+    pick() {
+      if (!ready()) return;
+      noise({ type: "highpass", f: 3200, d: 0.04, a: 0.002, v: 0.14 });
     },
     timeUp() {
       if (!ready()) return;

@@ -9,7 +9,7 @@ import { renderLeaderboard } from "../leaderboard/leaderboard";
 import { awardPoints } from "../round/round";
 import { paintTimerBar, type TimerColorState } from "../round/roundHud";
 import { triviaBag } from "./index";
-import { hideTriviaCard, revealTriviaAnswer, showTriviaCard } from "./triviaHud";
+import { hideTriviaCard, renderTriviaAnswers, revealTriviaAnswer, showTriviaCard } from "./triviaHud";
 import type { TriviaQuestion } from "./types";
 
 /**
@@ -19,15 +19,29 @@ import type { TriviaQuestion } from "./types";
  * rounds (round.phase is already "complete" the whole time this is active), so it doesn't need
  * to touch round.ts's phase state at all — it just reuses round.ts's `awardPoints` and
  * roundHud.ts's `paintTimerBar` where that's genuinely the same widget, not a new one.
+ *
+ * Answers are held, not scored live: a comment just locks a viewer into a choice (shown by name
+ * under that choice — see triviaHud.ts's renderTriviaAnswers), with no correct/wrong feedback at
+ * that point. Scoring only happens once, for everyone at once, when the timer runs out.
  */
 interface TriviaState {
   active: boolean;
   question: TriviaQuestion | null;
   deadline: number;
-  /** User ids who've already answered this question — one answer each. */
-  answered: Set<string>;
+  /** userId -> the held answer — one per user (first answer sticks), not scored until the reveal. */
+  answers: Map<string, { user: TikTokUser; name: string; choiceIndex: number }>;
+  /** Flips true the instant time's up, before the correct choice is highlighted — closes the
+   * window where a comment could just copy the answer that's now visible on screen for free points. */
+  revealed: boolean;
 }
-const trivia: TriviaState = { active: false, question: null, deadline: 0, answered: new Set() };
+const trivia: TriviaState = { active: false, question: null, deadline: 0, answers: new Map(), revealed: false };
+
+/** Recomputes the four name lists from `trivia.answers` and repaints them — called on every new answer. */
+function refreshAnswerDisplay(): void {
+  const byChoice: string[][] = [[], [], [], []];
+  for (const { name, choiceIndex } of trivia.answers.values()) byChoice[choiceIndex]?.push(name);
+  renderTriviaAnswers(byChoice);
+}
 
 export function isTriviaActive(): boolean {
   return trivia.active;
@@ -50,15 +64,33 @@ function beginTrivia(question: TriviaQuestion, deadline: number, onDone: () => v
   trivia.active = true;
   trivia.question = question;
   trivia.deadline = deadline;
-  trivia.answered = new Set();
+  trivia.answers = new Map();
+  trivia.revealed = false;
   showTriviaCard(question);
+  refreshAnswerDisplay(); // clears the name lists from any previous question
   log(`❓ Trivia: ${question.word} — ${question.definition}`, "ev-board");
   stageLater(Math.max(0, deadline - Date.now()), () => revealAndAdvance(onDone));
 }
 
+/** The only place trivia points are ever awarded — every held answer gets scored at once, so
+ * nobody's correctness is visible (to themselves or anyone reading chat) before this moment. */
 function revealAndAdvance(onDone: () => void): void {
   if (!trivia.question) return;
-  revealTriviaAnswer(trivia.question.correctIndex);
+  trivia.revealed = true; // stop accepting answers before the correct choice goes up, not after
+  const correctIndex = trivia.question.correctIndex;
+  let anyCorrect = false;
+  for (const { user, name, choiceIndex } of trivia.answers.values()) {
+    if (choiceIndex !== correctIndex) {
+      log(`❓❌ ${name} answered wrong`, "ev-wrong");
+      continue;
+    }
+    anyCorrect = true;
+    awardPoints(user, TRIVIA_CORRECT_POINTS);
+    log(`❓✅ ${name} answered correctly (+${TRIVIA_CORRECT_POINTS})`, "ev-solve");
+  }
+  if (trivia.answers.size) renderLeaderboard();
+  audio[anyCorrect ? "bonus" : "wrong"]();
+  revealTriviaAnswer(correctIndex);
   log(`❓ Trivia answer: ${trivia.question.word}`, "ev-board");
   stageLater(TRIVIA_REVEAL_MS, () => {
     hideTriviaCard();
@@ -97,22 +129,16 @@ export function parseAnswerIndex(rawText: string): number | null {
 }
 
 export function handleTriviaAnswer(user: TikTokUser, rawText: string): void {
-  if (!trivia.active || !trivia.question) return;
+  if (!trivia.active || !trivia.question || trivia.revealed) return;
   const idx = parseAnswerIndex(rawText);
   if (idx == null) return; // not a recognizable answer — ordinary chat noise during the interlude, not a wrong guess
   const player = getPlayer(user);
-  if (trivia.answered.has(player.id)) return; // one answer per user
-  trivia.answered.add(player.id);
+  if (trivia.answers.has(player.id)) return; // one answer per user — first one sticks
 
-  if (idx === trivia.question.correctIndex) {
-    awardPoints(user, TRIVIA_CORRECT_POINTS);
-    audio.bonus();
-    flashNearBoard(`✅ ${player.name}: correct! (+${TRIVIA_CORRECT_POINTS})`, false, true);
-    log(`❓✅ ${player.name} answered correctly (+${TRIVIA_CORRECT_POINTS})`, "ev-solve");
-  } else {
-    audio.wrong();
-    flashNearBoard(`✗ ${player.name}`, true);
-    log(`❓❌ ${player.name} answered wrong`, "ev-wrong");
-  }
-  renderLeaderboard();
+  const letter = String.fromCharCode(65 + idx);
+  trivia.answers.set(player.id, { user, name: player.name, choiceIndex: idx });
+  refreshAnswerDisplay();
+  audio.pick(); // dedicated neutral "locked in" click — never the correct/wrong SFX
+  flashNearBoard(`${player.name} picked ${letter}`, false);
+  log(`❓ ${player.name} picked ${letter}`, "ev-board");
 }

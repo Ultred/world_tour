@@ -9,6 +9,7 @@ import { resetStreak } from "../features/leaderboard/streak";
 import { newBoard } from "../features/levels/progression";
 import { handlePowerUp } from "../features/powerups/powerups";
 import { forceTimeUp, setDurationOverrideSec, setPaused } from "../features/round/round";
+import { handleTriviaAnswer, isTriviaActive } from "../features/trivia/trivia";
 import { log } from "./log";
 
 // The dev panel simulates a TikTok user from the plain username the tester typed — matches
@@ -40,7 +41,9 @@ function updateSoundBtn(): void {
  * applies locally — single-tab-only, but the panel still works standalone with just `npm run dev`. */
 async function simulateGuess(user: TikTokUser, text: string): Promise<void> {
   const event: GuessEvent = { type: "guess", user, text };
-  if (!(await emitToServer(event))) handleGuess(user, text);
+  // Same trivia-or-crossword routing as main.ts's WebSocket handler — needed here too since this
+  // fallback fires standalone (no dev:server running), bypassing that handler entirely.
+  if (!(await emitToServer(event))) (isTriviaActive() ? handleTriviaAnswer : handleGuess)(user, text);
 }
 
 /** Simulates a power-up button. Same server-first, local-fallback pattern as `simulateGuess`.
